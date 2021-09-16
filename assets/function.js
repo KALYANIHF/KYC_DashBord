@@ -4,7 +4,8 @@ function onload_TotalData(dataSet, fieldSet, colorSet) {
   var dynamic_data = "";
   for (let i = 0; i < fieldSet.length; i++) {
     dynamic_data += `
-                <div class="sub_grid" style="background-color: ${colorSet[i]};">
+                <a id="${fieldSet[i]}-sub">
+                  <div class="sub_grid" style="background-color: ${colorSet[i]};">
                     <div class="content">
                         <h6 style="text-transform:uppercase" data-aos="fade-down" data-aos-duration="500">${fieldSet[i]}</h6>
                         <div class="counter" data-aos="fade-up" data-aos-duration="500">
@@ -12,6 +13,7 @@ function onload_TotalData(dataSet, fieldSet, colorSet) {
                         </div>
                     </div>
                 </div>
+                </a>
         `;
   }
   // console.log(dynamic_data);
@@ -22,7 +24,8 @@ function dynamic_TotalData(dataSet, fieldSet, colorSet) {
   var dynamic_data = "";
   for (let i = 0; i < fieldSet.length; i++) {
     dynamic_data += `
-                <div class="sub_grid" style="background-color: ${colorSet[i]};">
+                <a id="${fieldSet[i]}-sub">
+                  <div class="sub_grid" style="background-color: ${colorSet[i]};">
                     <div class="content">
                         <h6 style="text-transform:uppercase" data-aos="fade-down" data-aos-duration="500">${fieldSet[i]}</h6>
                         <div class="counter" data-aos="fade-up" data-aos-duration="500">
@@ -30,6 +33,7 @@ function dynamic_TotalData(dataSet, fieldSet, colorSet) {
                         </div>
                     </div>
                 </div>
+                </a>
         `;
   }
   // console.log(dynamic_data);
@@ -174,7 +178,7 @@ function BottomBarChart(dataSet, colorSet, labelSet, text) {
       datasets: [
         {
           label: "self",
-          backgroundColor: "#caf270",
+          backgroundColor: `${colorSet[0]}`,
           data: [
             `${data0}`,
             25,
@@ -192,7 +196,7 @@ function BottomBarChart(dataSet, colorSet, labelSet, text) {
         },
         {
           label: "shg",
-          backgroundColor: "#45c490",
+          backgroundColor: `${colorSet[1]}`,
           data: [
             `${data1}`,
             15,
@@ -210,7 +214,7 @@ function BottomBarChart(dataSet, colorSet, labelSet, text) {
         },
         {
           label: "mfg",
-          backgroundColor: "#008d93",
+          backgroundColor: `${colorSet[2]}`,
           data: [
             `${data2}`,
             47,
@@ -228,7 +232,7 @@ function BottomBarChart(dataSet, colorSet, labelSet, text) {
         },
         {
           label: "organization",
-          backgroundColor: "#2e5468",
+          backgroundColor: `${colorSet[3]}`,
           data: [
             `${data3}`,
             20,
@@ -246,7 +250,7 @@ function BottomBarChart(dataSet, colorSet, labelSet, text) {
         },
         {
           label: "jlg",
-          backgroundColor: "#f51252",
+          backgroundColor: `${colorSet[4]}`,
           data: [
             `${data4}`,
             25,
@@ -302,17 +306,19 @@ function BottomBarChart(dataSet, colorSet, labelSet, text) {
 
 // ajex call functions
 // ######## all count data ########
-function Total_Kyc_Count(flag1, flag2, flag3) {
-  var return_value = $.ajax({
+function Total_Kyc_Count(flag1, flag2, flag3, start_date = "", end_date = "") {
+  var data_value = $.ajax({
     url: "kyc_dashbord_dataload.php",
     type: "post",
     async: false,
+    datatype: "json",
     data: {
       flag_type1: flag1,
       flag_type2: flag2,
       flag_type3: flag3,
+      start_date: start_date,
+      end_date: end_date,
     },
   }).responseText;
-
-  return JSON.parse(return_value);
+  return JSON.parse(data_value);
 }

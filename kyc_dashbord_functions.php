@@ -1,6 +1,6 @@
 <?php
 // define a function to count all type of kyc
-function all_kyc_count($conn,$timeflag){
+function all_kyc_count($conn,$timeflag,$start_date,$end_date){
     // total kyc
     $data = [];
     $sql = "select * from kyc_table";

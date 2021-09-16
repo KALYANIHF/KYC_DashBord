@@ -10,6 +10,16 @@
     <link rel="stylesheet" href="assets/main.css">
 </head>
 <body>
+    <!-- popup box -->
+    <div class="popup-box">
+        <div class="popup-content">
+            <div class="close"></div>
+            <div class="main-content">
+                
+            </div>
+        </div>
+    </div>
+    <!-- popup box end -->
     <div class="container-fluid">
         <!-- main header section -->
         <div class="row">
@@ -179,17 +189,11 @@
             '#51355a',
             '#2a0c4e'
         ]
-        barchart_color_set = [
-            '#d72638',
-            '#3f88c5',
-            '#f49d37',
-            '#140f2d',
-            '#f22b29'
-        ]
+        barchart_color_set = ['#d72638','#3f88c5','#f49d37','#140f2d','#f22b29']
         kyc_label_set = ['approve','reject','pending','seek clarification'];
         gender_label_set = ['Male','Female','Transgender'];
         kyc_barchart_label = ['Self','Shg','Mfg','Organization','Jlg'];
-        main_fieldSet = ["total_kyc","self","shg","mfg","Organization","jlg"];
+        main_fieldSet = ["total_kyc","self","shg","mfg","organization","jlg"];
         // main_fieldSet = ["alpha","beta","gama","delta","nano","pico","sudo","ls"];
         main_colorSet = ['#555','#d72638','#3f88c5','#f49d37','#140f2d','#f22b29'];
         // main_colorSet = ['#555','#d72638','#3f88c5','#f49d37','#140f2d','#140f36','#140f9d','#0f0'];
@@ -198,15 +202,14 @@
     <!-- main vanilla script ES6 -->
     <script>
         window.addEventListener('load',()=>{
+            $(".popup-box").hide();
             flag0 = Number(document.getElementById('date_range').value);
             flag1 = Number(document.getElementById('kyc_type').value);
             flag2 = Number(document.getElementById('filter_type').value);
             $('.error_massage').hide();
             $('#custom_date').hide();
-            // Total data load
-            let total_count = Total_Kyc_Count(flag0,flag1,flag2);
-            console.log(total_count);
-            onload_TotalData(total_count,main_fieldSet,main_colorSet);
+            //dynamic data call
+            onload_TotalData(Total_Kyc_Count(flag0,flag1,flag2),main_fieldSet,main_colorSet);
             // chart1
             // name of the argumants of this function (dataSet,colorSet,labelSet)
             LeftPieChart([50,30,17,25],kyc_color_set,kyc_label_set,'kyc by status till YTD');
@@ -223,11 +226,9 @@
                 // define a function to incement the value of the element
                 const updateCount = ()=>{
                     const target = e.getAttribute('data-target');
-                    // console.log(target);
                     const count =+ e.innerHTML;
-                    // console.log(count);
                     // increment the value by devide the target value with the speed value
-                    const inc =+ 1;
+                    const inc =+ 10;
                     if (count < target) {
                         // Add inc to count and output in counter
                         e.innerText = count + inc;
@@ -385,5 +386,60 @@
         })
     </script>
     <!-- end of JS script for data manupulation -->
+    <!-- close button click event -->
+    <script>
+        function table_heading(arg){
+            document.querySelector(".main-content").innerHTML = `
+           <h2 class="text-info table-heading">Netware ${arg} Content Table</h2>
+           <h4 id="chart-figure-type" class="type">Your Login Date and Time : ${(new Date().toLocaleString("en-US", {timeZone:"Asia/Kolkata"}))} </h4>
+           `;
+        }
+        document.querySelector('.close').addEventListener('click',()=>{
+           $(".popup-box").hide();
+        });
+        // when click on total kyc
+        $(document).on('click',"#total_kyc-sub",function(e){
+           $(".popup-box").show();
+           $(".main-content").empty();
+           console.log(e.target);
+           table_heading(e.target.id);
+        })
+        // when click on self
+        $(document).on('click',"#self-sub",function(e){
+           $(".popup-box").show();
+           $(".main-content").empty();
+           console.log(e.target);
+           table_heading(e.target.id);
+        })
+        // when click on the shg
+        $(document).on('click',"#shg-sub",function(e){
+           $(".popup-box").show();
+           $(".main-content").empty();
+           console.log(e.target);
+           table_heading(e.target.id);
+        })
+        // when click on the mfg
+        $(document).on('click',"#mfg-sub",function(e){
+           $(".popup-box").show();
+           $(".main-content").empty();
+           console.log(e.target);
+           table_heading(e.target.id);
+        })
+        // when click on the organization
+        $(document).on('click',"#organization-sub",function(e){
+           $(".popup-box").show();
+           $(".main-content").empty();
+           console.log(e.target);
+           table_heading(e.target.id);
+        })
+        // when click on the jlg
+        $(document).on('click',"#jlg-sub",function(e){
+           $(".popup-box").show();
+           $(".main-content").empty();
+           console.log(e.target);
+           table_heading(e.target.id);
+        })
+    </script>
+    <!-- close button click event end -->
 </body>
 </html>
