@@ -143,7 +143,7 @@
     <!-- footer section start -->
         <div class="footer p-3 bg-secondary">
             <div class="container">
-                <div class="content">
+                <div class="content_footer">
                     <h6 class="letter_space">Netware All Right Reserved &copy; <script>document.write(new Date().getFullYear())</script></h6>
                 </div>
             </div>
@@ -209,13 +209,19 @@
             $('.error_massage').hide();
             $('#custom_date').hide();
             //dynamic data call
-            onload_TotalData(Total_Kyc_Count(flag0,flag1,flag2),main_fieldSet,main_colorSet);
+            let data = Ajax_Call(flag0,flag1,flag2);
+            data = data.replace("[","");
+            data = data.replace("][",",");
+            data = data.replace("][",",");
+            data = data.replace("]","");
+            console.log(data.split(","));
+            onload_TotalData([220,40,50,18,34,55],main_fieldSet,main_colorSet);
             // chart1
             // name of the argumants of this function (dataSet,colorSet,labelSet)
-            LeftPieChart([50,30,17,25],kyc_color_set,kyc_label_set,'kyc by status till YTD');
+            LeftPieChart([50,40,30,15],kyc_color_set,kyc_label_set,'kyc by status till YTD');
             // chart2
             // name of the argumants of this function (dataSet,colorSet,labelSet)
-            RightPieChart([45,30,12],gender_color_set,gender_label_set,'kyc status by gender till YTD');
+            RightPieChart([20,30,40],gender_color_set,gender_label_set,'kyc status by gender till YTD');
             // chart3
             // same as above
             BottomBarChart([64,85,90,75,110,98],barchart_color_set,[2000,2001,2002,2003,2004,2005,2006,2007,2008,2010,2011,2012],'All Kyc DataSheet till YTD');
@@ -258,7 +264,7 @@
                 $('.inside,.inside_').show();
                 $('.error_massage').hide();
                 // TotalData([250,85,90,75,110,55]);
-                dynamic_TotalData([250,85,90,75,110,55],main_fieldSet,main_colorSet);
+                dynamic_TotalData([150,20,30,40,50,60],main_fieldSet,main_colorSet);
                 LeftPieChart([60,40,20,35],kyc_color_set,kyc_label_set,'kyc by status till YTD');
                 RightPieChart([40,20,35],gender_color_set,gender_label_set,'Total Kyc By Gender till YTD');
                 BottomBarChart([85,90,75,110,55],barchart_color_set,kyc_barchart_label,'All Kyc DataSheet till YTD');
@@ -267,7 +273,7 @@
                 $('#custom_date').hide();
                 $('.inside,.inside_').show();
                 $('.error_massage').hide();
-                dynamic_TotalData([150,65,70,85,90,35],main_fieldSet,main_colorSet);
+                dynamic_TotalData([150,20,30,40,50,60],main_fieldSet,main_colorSet);
                 LeftPieChart([60,40,20,35],kyc_color_set,kyc_label_set,'kyc by status till Today');
                 RightPieChart([40,20,35],gender_color_set,gender_label_set,'Total Kyc By Gender till Today');
                 BottomBarChart([85,64,55,40,36],barchart_color_set,kyc_barchart_label,'All Kyc DataSheet till Today');
@@ -276,7 +282,7 @@
                 $('#custom_date').hide();
                 $('.inside,.inside_').show();
                 $('.error_massage').hide();
-                dynamic_TotalData([100,80,60,45,70,55],main_fieldSet,main_colorSet);
+                dynamic_TotalData([150,20,30,40,50,60],main_fieldSet,main_colorSet);
                 LeftPieChart([25,12,50,30],kyc_color_set,kyc_label_set,'kyc by status till last Week');
                 RightPieChart([50,25,40],gender_color_set,gender_label_set,'Total Kyc By Gender till last Week');
                 BottomBarChart([45,28,25,15,32],barchart_color_set,kyc_barchart_label,'All Kyc DataSheet till last Week');
@@ -285,7 +291,7 @@
                 $('#custom_date').hide();
                 $('.inside,.inside_').show();
                 $('.error_massage').hide();
-                dynamic_TotalData([90,25,30,35,20,15],main_fieldSet,main_colorSet);
+                dynamic_TotalData([150,20,30,40,50,60],main_fieldSet,main_colorSet);
                 LeftPieChart([25,12,50,30],kyc_color_set,kyc_label_set,'kyc by status till last Month');
                 RightPieChart([30,20,50],gender_color_set,gender_label_set,'Total Kyc By Gender till last Month');
                 BottomBarChart([40,20,30,25,5],barchart_color_set,kyc_barchart_label,'All Kyc DataSheet till last Month');
@@ -294,7 +300,7 @@
                 $('#custom_date').hide();
                 $('.inside,.inside_').show();
                 $('.error_massage').hide();
-                dynamic_TotalData([140,55,57,65,20,45],main_fieldSet,main_colorSet);
+                dynamic_TotalData([150,20,30,40,50,60],main_fieldSet,main_colorSet);
                 LeftPieChart([25,12,50,30],kyc_color_set,kyc_label_set,'kyc by status till last 6 Month');
                 RightPieChart([50,20,30],gender_color_set,gender_label_set,'Total Kyc By Gender till last 6 Month');
                 BottomBarChart([30,25,28,12,45],barchart_color_set,kyc_barchart_label,'All Kyc DataSheet till last 6 Month');
@@ -303,7 +309,7 @@
                 $('#custom_date').hide();
                 $('.inside,.inside_').show();
                 $('.error_massage').hide();
-                dynamic_TotalData([110,35,10,15,30,55],main_fieldSet,main_colorSet);
+                dynamic_TotalData([150,20,30,40,50,60],main_fieldSet,main_colorSet);
                 LeftPieChart([35,45,40,25],kyc_color_set,kyc_label_set,'kyc by status till last 1 Year');
                 RightPieChart([50,30,25],gender_color_set,gender_label_set,'Total Kyc By Gender till last 1 Year');
                 BottomBarChart([40,25,25,15,15],barchart_color_set,kyc_barchart_label,'All Kyc DataSheet till last 1 Year');
@@ -363,12 +369,7 @@
         document.getElementById('check_date').addEventListener('click',(e)=>{
             const start_date = document.querySelector('#start_date').value;
             const end_date = document.querySelector('#end_date').value;
-            // if ((start_date == null || start_date == '') && (end_date == null || end_date == '')) {
-            //     e.preventDefault();
-            //     alert('Please Select Date Range Before Click Fetch');
-            // }else{
-            //     console.log(start_date,end_date);
-            // }
+            // check if the date is empty or not
             if ((start_date == null || start_date == '') && (end_date == null || end_date == '')) {
                 e.preventDefault();
                 alert('Please Select Date Range Before Click Check');
@@ -378,7 +379,7 @@
                 $('#custom_date').hide();
                 $('.inside,.inside_').show();
                 $('.error_massage').hide();
-                dynamic_TotalData([160,35,30,45,50,15],main_fieldSet,main_colorSet);
+                dynamic_TotalData(Ajax_Call(flag0,flag1,flag2,start_date,end_date),main_fieldSet,main_colorSet);
                 LeftPieChart([35,45,40,25],kyc_color_set,kyc_label_set,`All Kyc DataSheet Between ${start_date} and ${end_date}`);
                 RightPieChart([50,30,25],gender_color_set,gender_label_set,`All Kyc DataSheet Between ${start_date} and ${end_date}`);
                 BottomBarChart([40,25,25,15,15],barchart_color_set,kyc_barchart_label,`All Kyc DataSheet Between ${start_date} and ${end_date}`);
@@ -389,6 +390,7 @@
     <!-- close button click event -->
     <script>
         function table_heading(arg){
+            arg = arg.toUpperCase();
             document.querySelector(".main-content").innerHTML = `
            <h2 class="text-info table-heading">Netware ${arg} Content Table</h2>
            <h4 id="chart-figure-type" class="type">Your Login Date and Time : ${(new Date().toLocaleString("en-US", {timeZone:"Asia/Kolkata"}))} </h4>
@@ -397,48 +399,11 @@
         document.querySelector('.close').addEventListener('click',()=>{
            $(".popup-box").hide();
         });
-        // when click on total kyc
-        $(document).on('click',"#total_kyc-sub",function(e){
+        function getID(e){
            $(".popup-box").show();
            $(".main-content").empty();
-           console.log(e.target);
-           table_heading(e.target.id);
-        })
-        // when click on self
-        $(document).on('click',"#self-sub",function(e){
-           $(".popup-box").show();
-           $(".main-content").empty();
-           console.log(e.target);
-           table_heading(e.target.id);
-        })
-        // when click on the shg
-        $(document).on('click',"#shg-sub",function(e){
-           $(".popup-box").show();
-           $(".main-content").empty();
-           console.log(e.target);
-           table_heading(e.target.id);
-        })
-        // when click on the mfg
-        $(document).on('click',"#mfg-sub",function(e){
-           $(".popup-box").show();
-           $(".main-content").empty();
-           console.log(e.target);
-           table_heading(e.target.id);
-        })
-        // when click on the organization
-        $(document).on('click',"#organization-sub",function(e){
-           $(".popup-box").show();
-           $(".main-content").empty();
-           console.log(e.target);
-           table_heading(e.target.id);
-        })
-        // when click on the jlg
-        $(document).on('click',"#jlg-sub",function(e){
-           $(".popup-box").show();
-           $(".main-content").empty();
-           console.log(e.target);
-           table_heading(e.target.id);
-        })
+           table_heading(e.slice(0,e.length-4));
+        }
     </script>
     <!-- close button click event end -->
 </body>

@@ -4,15 +4,13 @@ function onload_TotalData(dataSet, fieldSet, colorSet) {
   var dynamic_data = "";
   for (let i = 0; i < fieldSet.length; i++) {
     dynamic_data += `
-                <a id="${fieldSet[i]}-sub">
+                <a onclick='getID(this.id)' id="${fieldSet[i]}-sub">
                   <div class="sub_grid" style="background-color: ${colorSet[i]};">
-                    <div class="content">
                         <h6 style="text-transform:uppercase" data-aos="fade-down" data-aos-duration="500">${fieldSet[i]}</h6>
                         <div class="counter" data-aos="fade-up" data-aos-duration="500">
                             <h5 class="count" data-target="${dataSet[i]}" id="${fieldSet[i]}">0</h5>
                         </div>
-                    </div>
-                </div>
+                   </div>
                 </a>
         `;
   }
@@ -24,7 +22,7 @@ function dynamic_TotalData(dataSet, fieldSet, colorSet) {
   var dynamic_data = "";
   for (let i = 0; i < fieldSet.length; i++) {
     dynamic_data += `
-                <a id="${fieldSet[i]}-sub">
+                <a onclick='getID(this.id)' id="${fieldSet[i]}-sub">
                   <div class="sub_grid" style="background-color: ${colorSet[i]};">
                     <div class="content">
                         <h6 style="text-transform:uppercase" data-aos="fade-down" data-aos-duration="500">${fieldSet[i]}</h6>
@@ -32,7 +30,7 @@ function dynamic_TotalData(dataSet, fieldSet, colorSet) {
                             <h5 class="count" data-target="${dataSet[i]}" id="${fieldSet[i]}">${dataSet[i]}</h5>
                         </div>
                     </div>
-                </div>
+                  </div>
                 </a>
         `;
   }
@@ -306,12 +304,12 @@ function BottomBarChart(dataSet, colorSet, labelSet, text) {
 
 // ajex call functions
 // ######## all count data ########
-function Total_Kyc_Count(flag1, flag2, flag3, start_date = "", end_date = "") {
-  var data_value = $.ajax({
+function Ajax_Call(flag1, flag2, flag3, start_date = "", end_date = "") {
+  var response = $.ajax({
     url: "kyc_dashbord_dataload.php",
     type: "post",
     async: false,
-    datatype: "json",
+    dataType: "json",
     data: {
       flag_type1: flag1,
       flag_type2: flag2,
@@ -320,5 +318,7 @@ function Total_Kyc_Count(flag1, flag2, flag3, start_date = "", end_date = "") {
       end_date: end_date,
     },
   }).responseText;
-  return JSON.parse(data_value);
+  // console.log(typeof response);
+  return response;
+  // console.log(data_value);
 }

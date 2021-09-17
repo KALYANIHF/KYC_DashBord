@@ -30,6 +30,7 @@ body {
   width: 100%;
   height: 100%;
   z-index: 999;
+  overflow: hidden;
 }
 /* shine effect on the sub grid */
 .sub_grid {
@@ -196,15 +197,11 @@ body {
 .sub_grid {
   padding: 0.5rem;
   border-radius: 4px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   cursor: pointer;
-}
-.content {
   text-align: center;
 }
-.content h6 {
+
+.sub_grid h6 {
   margin: 0px;
   color: white;
   letter-spacing: 0.2rem;
@@ -263,26 +260,16 @@ body {
   justify-content: center;
   align-items: center;
 }
-/* grid color code */
-/* .sub_grid:nth-child(1){
-    background-color: #555;
-  }
-  .sub_grid:nth-child(2){
-    background-color: #d72638;
-  }
-  .sub_grid:nth-child(3){
-    background-color: #3f88c5;
-  }
-  .sub_grid:nth-child(4){
-    background-color: #f49d37;
-  }
-  .sub_grid:nth-child(5){
-    background-color: #140f2d;
-  }
-  .sub_grid:nth-child(6){
-    background-color: #f22b29;
-  } */
-/* grid color code end */
+.content_footer {
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.content_footer h6 {
+  padding: 0px;
+  margin: 0px;
+}
 .align_item {
   position: relative;
 }
