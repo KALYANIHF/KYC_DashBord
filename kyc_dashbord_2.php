@@ -209,19 +209,22 @@
             $('.error_massage').hide();
             $('#custom_date').hide();
             //dynamic data call
+            // TODO: sanitize the data with Ajax call for all (total count, left pie chart , right pie chart)
             let data = Ajax_Call(flag0,flag1,flag2);
-            data = data.replace("[","");
-            data = data.replace("][",",");
-            data = data.replace("][",",");
-            data = data.replace("]","");
-            console.log(data.split(","));
-            onload_TotalData([220,40,50,18,34,55],main_fieldSet,main_colorSet);
+            let sanitize_data = dataSanitize(data);
+            console.log(sanitize_data);
+            let total_count = sanitize_data.slice(0,6);
+            let left_pie_chart = sanitize_data.slice(6,10);
+            let right_pie_chart = sanitize_data.slice(10);
+            console.log(total_count,left_pie_chart,right_pie_chart);
+            
+            onload_TotalData(total_count,main_fieldSet,main_colorSet);
             // chart1
             // name of the argumants of this function (dataSet,colorSet,labelSet)
-            LeftPieChart([50,40,30,15],kyc_color_set,kyc_label_set,'kyc by status till YTD');
+            LeftPieChart(left_pie_chart,kyc_color_set,kyc_label_set,'kyc by status till YTD');
             // chart2
             // name of the argumants of this function (dataSet,colorSet,labelSet)
-            RightPieChart([20,30,40],gender_color_set,gender_label_set,'kyc status by gender till YTD');
+            RightPieChart(right_pie_chart,gender_color_set,gender_label_set,'kyc status by gender till YTD');
             // chart3
             // same as above
             BottomBarChart([64,85,90,75,110,98],barchart_color_set,[2000,2001,2002,2003,2004,2005,2006,2007,2008,2010,2011,2012],'All Kyc DataSheet till YTD');

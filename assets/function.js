@@ -302,6 +302,14 @@ function BottomBarChart(dataSet, colorSet, labelSet, text) {
   document.getElementById("chart_text3").innerHTML = text;
 }
 
+function dataSanitize(data) {
+  data = data.replace("[", "");
+  data = data.replace("][", ",");
+  data = data.replace("][", ",");
+  data = data.replace("]", "");
+  return data.split(",");
+}
+
 // ajex call functions
 // ######## all count data ########
 function Ajax_Call(flag1, flag2, flag3, start_date = "", end_date = "") {
