@@ -133,19 +133,158 @@ function approve_reject_pending_seekClarifiaction($conn,$check_flag,$timeflag,$s
     if ($check_flag == 1) {
         $data = [];
         // for all kyc
-        $sql = "select * from kyc_table where status = 'approve'";
+        // YTD
+        $sql = $approve;
         $result = mysqli_query($conn,$sql);
         array_push($data,$result->num_rows);
 
-        $sql = "select * from kyc_table where status = 'reject'";
+        $sql = $reject;
         $result = mysqli_query($conn,$sql);
         array_push($data,$result->num_rows);
 
-        $sql = "select * from kyc_table where status = 'pending'";
+        $sql = $pending;
         $result = mysqli_query($conn,$sql);
         array_push($data,$result->num_rows);
 
-        $sql = "select * from kyc_table where status = 'seek_con'";
+        $sql = $seek_con;
+        $result = mysqli_query($conn,$sql);
+        array_push($data,$result->num_rows);
+
+        echo json_encode($data);
+    }
+    if ($check_flag == 2) {
+        $data = [];
+        // today
+        // for all kyc
+        // $approve, $reject, $pending, $seek_con is coming from the flag.php (reson of making -- reduce the repitation of code)
+        $sql = $approve." and ".$today;
+        $result = mysqli_query($conn,$sql);
+        array_push($data,$result->num_rows);
+
+        $sql = $reject ." and ". $today;
+        $result = mysqli_query($conn,$sql);
+        array_push($data,$result->num_rows);
+
+        $sql = $pending ." and ". $today;
+        $result = mysqli_query($conn,$sql);
+        array_push($data,$result->num_rows);
+
+        $sql = $seek_con ." and ". $today;
+        $result = mysqli_query($conn,$sql);
+        array_push($data,$result->num_rows);
+
+        echo json_encode($data);
+    }
+    if ($check_flag == 3) {
+        $data = [];
+        // for all kyc
+        // last week
+        // $approve, $reject, $pending, $seek_con is coming from the flag.php (reson of making -- reduce the repitation of code)
+        $sql = $approve." and ".$last_week;
+        $result = mysqli_query($conn,$sql);
+        array_push($data,$result->num_rows);
+
+        $sql = $reject ." and ". $last_week;
+        $result = mysqli_query($conn,$sql);
+        array_push($data,$result->num_rows);
+
+        $sql = $pending ." and ". $last_week;
+        $result = mysqli_query($conn,$sql);
+        array_push($data,$result->num_rows);
+
+        $sql = $seek_con ." and ". $last_week;
+        $result = mysqli_query($conn,$sql);
+        array_push($data,$result->num_rows);
+
+        echo json_encode($data);
+    }
+    if ($check_flag == 4) {
+        $data = [];
+        // for all kyc
+        // last 1 month
+        // $approve, $reject, $pending, $seek_con is coming from the flag.php (reson of making -- reduce the repitation of code)
+        $sql = $approve." and ".$last_month;
+        $result = mysqli_query($conn,$sql);
+        array_push($data,$result->num_rows);
+
+        $sql = $reject ." and ". $last_month;
+        $result = mysqli_query($conn,$sql);
+        array_push($data,$result->num_rows);
+
+        $sql = $pending ." and ". $last_month;
+        $result = mysqli_query($conn,$sql);
+        array_push($data,$result->num_rows);
+
+        $sql = $seek_con ." and ". $last_month;
+        $result = mysqli_query($conn,$sql);
+        array_push($data,$result->num_rows);
+
+        echo json_encode($data);
+    }
+    if ($check_flag == 5) {
+        $data = [];
+        // for all kyc
+        // last 6 month
+        // $approve, $reject, $pending, $seek_con is coming from the flag.php (reson of making -- reduce the repitation of code)
+        $sql = $approve." and ".$last_6_month;
+        $result = mysqli_query($conn,$sql);
+        array_push($data,$result->num_rows);
+
+        $sql = $reject ." and ". $last_6_month;
+        $result = mysqli_query($conn,$sql);
+        array_push($data,$result->num_rows);
+
+        $sql = $pending ." and ". $last_6_month;
+        $result = mysqli_query($conn,$sql);
+        array_push($data,$result->num_rows);
+
+        $sql = $seek_con ." and ". $last_6_month;
+        $result = mysqli_query($conn,$sql);
+        array_push($data,$result->num_rows);
+
+        echo json_encode($data);
+    }
+    if ($check_flag == 6) {
+        $data = [];
+        // for all kyc
+        // last 1 year
+        // $approve, $reject, $pending, $seek_con is coming from the flag.php (reson of making -- reduce the repitation of code)
+        $sql = $approve." and ".$last_1_year;
+        $result = mysqli_query($conn,$sql);
+        array_push($data,$result->num_rows);
+
+        $sql = $reject ." and ". $last_1_year;
+        $result = mysqli_query($conn,$sql);
+        array_push($data,$result->num_rows);
+
+        $sql = $pending ." and ". $last_1_year;
+        $result = mysqli_query($conn,$sql);
+        array_push($data,$result->num_rows);
+
+        $sql = $seek_con ." and ". $last_1_year;
+        $result = mysqli_query($conn,$sql);
+        array_push($data,$result->num_rows);
+
+        echo json_encode($data);
+    }
+    if ($check_flag == 7) {
+        $data = [];
+        // for all kyc
+        // custom date
+        // $approve, $reject, $pending, $seek_con is coming from the flag.php (reson of making -- reduce the repitation of code)
+        $sql = $approve." and ".$custom_date;
+        $result = mysqli_query($conn,$sql);
+        array_push($data,$result->num_rows);
+
+        $sql = $reject ." and ". $custom_date;
+        $result = mysqli_query($conn,$sql);
+        array_push($data,$result->num_rows);
+
+        $sql = $pending ." and ". $custom_date;
+        $result = mysqli_query($conn,$sql);
+        array_push($data,$result->num_rows);
+
+        $sql = $seek_con ." and ". $custom_date;
         $result = mysqli_query($conn,$sql);
         array_push($data,$result->num_rows);
 
@@ -159,18 +298,126 @@ function Kyc_By_Gender($conn,$check_flag,$timeflag,$start_date,$end_date){
     if ($check_flag == 1) {
         $data = [];
         // for all kyc
-        $sql = "select * from kyc_table where gender = 'male'";
+        // YTD
+        $sql = $gender_male;
         $result = mysqli_query($conn,$sql);
         array_push($data,$result->num_rows);
 
-        $sql = "select * from kyc_table where gender = 'female'";
+        $sql = $gender_female;
         $result = mysqli_query($conn,$sql);
         array_push($data,$result->num_rows);
 
-        $sql = "select * from kyc_table where gender = 'transgender'";
+        $sql = $gender_trans;
         $result = mysqli_query($conn,$sql);
         array_push($data,$result->num_rows);
 
         echo json_encode($data);
     }
+    if ($check_flag == 2) {
+        $data = [];
+        // for all kyc
+        // today
+        $sql = $gender_male." and ". $today;
+        $result = mysqli_query($conn,$sql);
+        array_push($data,$result->num_rows);
+
+        $sql = $gender_female." and ".$today;
+        $result = mysqli_query($conn,$sql);
+        array_push($data,$result->num_rows);
+
+        $sql = $gender_trans." and ".$today;
+        $result = mysqli_query($conn,$sql);
+        array_push($data,$result->num_rows);
+
+        echo json_encode($data);
+    }
+    if ($check_flag == 3) {
+        $data = [];
+        // for all kyc
+        // last week
+        $sql = $gender_male." and ". $last_week;
+        $result = mysqli_query($conn,$sql);
+        array_push($data,$result->num_rows);
+
+        $sql = $gender_female." and ".$last_week;
+        $result = mysqli_query($conn,$sql);
+        array_push($data,$result->num_rows);
+
+        $sql = $gender_trans." and ".$last_week;
+        $result = mysqli_query($conn,$sql);
+        array_push($data,$result->num_rows);
+
+        echo json_encode($data);
+    }
+    if ($check_flag == 4) {
+        $data = [];
+        // for all kyc
+        // last month
+        $sql = $gender_male." and ". $last_month;
+        $result = mysqli_query($conn,$sql);
+        array_push($data,$result->num_rows);
+
+        $sql = $gender_female." and ".$last_month;
+        $result = mysqli_query($conn,$sql);
+        array_push($data,$result->num_rows);
+
+        $sql = $gender_trans." and ".$last_month;
+        $result = mysqli_query($conn,$sql);
+        array_push($data,$result->num_rows);
+
+        echo json_encode($data);
+    }
+    if ($check_flag == 5) {
+        $data = [];
+        // for all kyc
+        // last 6 month
+        $sql = $gender_male." and ". $last_6_month;
+        $result = mysqli_query($conn,$sql);
+        array_push($data,$result->num_rows);
+
+        $sql = $gender_female." and ".$last_6_month;
+        $result = mysqli_query($conn,$sql);
+        array_push($data,$result->num_rows);
+
+        $sql = $gender_trans." and ".$last_6_month;
+        $result = mysqli_query($conn,$sql);
+        array_push($data,$result->num_rows);
+
+        echo json_encode($data);
+    }
+    if ($check_flag == 6) {
+        $data = [];
+        // for all kyc
+        // last 1 year
+        $sql = $gender_male." and ". $last_1_year;
+        $result = mysqli_query($conn,$sql);
+        array_push($data,$result->num_rows);
+
+        $sql = $gender_female." and ".$last_1_year;
+        $result = mysqli_query($conn,$sql);
+        array_push($data,$result->num_rows);
+
+        $sql = $gender_trans." and ".$last_1_year;
+        $result = mysqli_query($conn,$sql);
+        array_push($data,$result->num_rows);
+
+        echo json_encode($data);
+    }
+    if ($check_flag == 7) {
+        $data = [];
+        // for all kyc
+        // custom date
+        $sql = $gender_male." and ". $custom_date;
+        $result = mysqli_query($conn,$sql);
+        array_push($data,$result->num_rows);
+        $sql = $gender_female." and ".$custom_date;
+        $result = mysqli_query($conn,$sql);
+        array_push($data,$result->num_rows);
+
+        $sql = $gender_trans." and ".$custom_date;
+        $result = mysqli_query($conn,$sql);
+        array_push($data,$result->num_rows);
+        echo json_encode($data);
+    }
+    
 }

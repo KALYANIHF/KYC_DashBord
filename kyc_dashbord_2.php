@@ -212,11 +212,10 @@
             // TODO: sanitize the data with Ajax call for all (total count, left pie chart , right pie chart)
             let data = Ajax_Call(flag0,flag1,flag2);
             let sanitize_data = dataSanitize(data);
-            console.log(sanitize_data);
+            // =========== all the chart data
             let total_count = sanitize_data.slice(0,6);
             let left_pie_chart = sanitize_data.slice(6,10);
             let right_pie_chart = sanitize_data.slice(10);
-            console.log(total_count,left_pie_chart,right_pie_chart);
             
             onload_TotalData(total_count,main_fieldSet,main_colorSet);
             // chart1
@@ -266,55 +265,90 @@
                 $('#custom_date').hide();
                 $('.inside,.inside_').show();
                 $('.error_massage').hide();
-                // TotalData([250,85,90,75,110,55]);
-                dynamic_TotalData([150,20,30,40,50,60],main_fieldSet,main_colorSet);
-                LeftPieChart([60,40,20,35],kyc_color_set,kyc_label_set,'kyc by status till YTD');
-                RightPieChart([40,20,35],gender_color_set,gender_label_set,'Total Kyc By Gender till YTD');
+                let data = Ajax_Call(flag0,flag1,flag2);
+                let sanitize_data = dataSanitize(data);
+                // =========== all the chart data
+                let total_count = sanitize_data.slice(0,6);
+                let left_pie_chart = sanitize_data.slice(6,10);
+                let right_pie_chart = sanitize_data.slice(10);
+                dynamic_TotalData(total_count,main_fieldSet,main_colorSet);
+                LeftPieChart(left_pie_chart,kyc_color_set,kyc_label_set,'kyc by status till YTD');
+                RightPieChart(right_pie_chart,gender_color_set,gender_label_set,'Total Kyc By Gender till YTD');
                 BottomBarChart([85,90,75,110,55],barchart_color_set,kyc_barchart_label,'All Kyc DataSheet till YTD');
             }
             if (flag0 === 2 && flag1 === 1 && flag2 === 1) {
                 $('#custom_date').hide();
                 $('.inside,.inside_').show();
                 $('.error_massage').hide();
-                dynamic_TotalData([150,20,30,40,50,60],main_fieldSet,main_colorSet);
-                LeftPieChart([60,40,20,35],kyc_color_set,kyc_label_set,'kyc by status till Today');
-                RightPieChart([40,20,35],gender_color_set,gender_label_set,'Total Kyc By Gender till Today');
+                let data = Ajax_Call(flag0,flag1,flag2);
+                let sanitize_data = dataSanitize(data);
+                // =========== all the chart data
+                let total_count = sanitize_data.slice(0,6);
+                let left_pie_chart = sanitize_data.slice(6,10);
+                let right_pie_chart = sanitize_data.slice(10);
+                dynamic_TotalData(total_count,main_fieldSet,main_colorSet);
+                LeftPieChart(left_pie_chart,kyc_color_set,kyc_label_set,'kyc by status till Today');
+                RightPieChart(right_pie_chart,gender_color_set,gender_label_set,'Total Kyc By Gender till Today');
                 BottomBarChart([85,64,55,40,36],barchart_color_set,kyc_barchart_label,'All Kyc DataSheet till Today');
             }
             if (flag0 === 3 && flag1 === 1 && flag2 === 1) {
                 $('#custom_date').hide();
                 $('.inside,.inside_').show();
                 $('.error_massage').hide();
-                dynamic_TotalData([150,20,30,40,50,60],main_fieldSet,main_colorSet);
-                LeftPieChart([25,12,50,30],kyc_color_set,kyc_label_set,'kyc by status till last Week');
-                RightPieChart([50,25,40],gender_color_set,gender_label_set,'Total Kyc By Gender till last Week');
+                let data = Ajax_Call(flag0,flag1,flag2);
+                let sanitize_data = dataSanitize(data);
+                // =========== all the chart data
+                let total_count = sanitize_data.slice(0,6);
+                let left_pie_chart = sanitize_data.slice(6,10);
+                let right_pie_chart = sanitize_data.slice(10);
+                dynamic_TotalData(total_count,main_fieldSet,main_colorSet);
+                LeftPieChart(left_pie_chart,kyc_color_set,kyc_label_set,'kyc by status till last Week');
+                RightPieChart(right_pie_chart,gender_color_set,gender_label_set,'Total Kyc By Gender till last Week');
                 BottomBarChart([45,28,25,15,32],barchart_color_set,kyc_barchart_label,'All Kyc DataSheet till last Week');
             }
             if (flag0 === 4 && flag1 === 1 && flag2 === 1) {
                 $('#custom_date').hide();
                 $('.inside,.inside_').show();
                 $('.error_massage').hide();
-                dynamic_TotalData([150,20,30,40,50,60],main_fieldSet,main_colorSet);
-                LeftPieChart([25,12,50,30],kyc_color_set,kyc_label_set,'kyc by status till last Month');
-                RightPieChart([30,20,50],gender_color_set,gender_label_set,'Total Kyc By Gender till last Month');
+                let data = Ajax_Call(flag0,flag1,flag2);
+                let sanitize_data = dataSanitize(data);
+                // =========== all the chart data
+                let total_count = sanitize_data.slice(0,6);
+                let left_pie_chart = sanitize_data.slice(6,10);
+                let right_pie_chart = sanitize_data.slice(10);
+                dynamic_TotalData(total_count,main_fieldSet,main_colorSet);
+                LeftPieChart(left_pie_chart,kyc_color_set,kyc_label_set,'kyc by status till last Month');
+                RightPieChart(right_pie_chart,gender_color_set,gender_label_set,'Total Kyc By Gender till last Month');
                 BottomBarChart([40,20,30,25,5],barchart_color_set,kyc_barchart_label,'All Kyc DataSheet till last Month');
             }
             if (flag0 === 5 && flag1 === 1 && flag2 === 1) {
                 $('#custom_date').hide();
                 $('.inside,.inside_').show();
                 $('.error_massage').hide();
-                dynamic_TotalData([150,20,30,40,50,60],main_fieldSet,main_colorSet);
-                LeftPieChart([25,12,50,30],kyc_color_set,kyc_label_set,'kyc by status till last 6 Month');
-                RightPieChart([50,20,30],gender_color_set,gender_label_set,'Total Kyc By Gender till last 6 Month');
+                let data = Ajax_Call(flag0,flag1,flag2);
+                let sanitize_data = dataSanitize(data);
+                // =========== all the chart data
+                let total_count = sanitize_data.slice(0,6);
+                let left_pie_chart = sanitize_data.slice(6,10);
+                let right_pie_chart = sanitize_data.slice(10);
+                dynamic_TotalData(total_count,main_fieldSet,main_colorSet);
+                LeftPieChart(left_pie_chart,kyc_color_set,kyc_label_set,'kyc by status till last 6 Month');
+                RightPieChart(right_pie_chart,gender_color_set,gender_label_set,'Total Kyc By Gender till last 6 Month');
                 BottomBarChart([30,25,28,12,45],barchart_color_set,kyc_barchart_label,'All Kyc DataSheet till last 6 Month');
             }
             if (flag0 === 6 && flag1 === 1 && flag2 === 1) {
                 $('#custom_date').hide();
                 $('.inside,.inside_').show();
                 $('.error_massage').hide();
-                dynamic_TotalData([150,20,30,40,50,60],main_fieldSet,main_colorSet);
-                LeftPieChart([35,45,40,25],kyc_color_set,kyc_label_set,'kyc by status till last 1 Year');
-                RightPieChart([50,30,25],gender_color_set,gender_label_set,'Total Kyc By Gender till last 1 Year');
+                let data = Ajax_Call(flag0,flag1,flag2);
+                let sanitize_data = dataSanitize(data);
+                // =========== all the chart data
+                let total_count = sanitize_data.slice(0,6);
+                let left_pie_chart = sanitize_data.slice(6,10);
+                let right_pie_chart = sanitize_data.slice(10);
+                dynamic_TotalData(total_count,main_fieldSet,main_colorSet);
+                LeftPieChart(left_pie_chart,kyc_color_set,kyc_label_set,'kyc by status till last 1 Year');
+                RightPieChart(right_pie_chart,gender_color_set,gender_label_set,'Total Kyc By Gender till last 1 Year');
                 BottomBarChart([40,25,25,15,15],barchart_color_set,kyc_barchart_label,'All Kyc DataSheet till last 1 Year');
             }
             if (flag0 === 7 && flag1 === 1 && flag2 === 1) {
@@ -382,9 +416,16 @@
                 $('#custom_date').hide();
                 $('.inside,.inside_').show();
                 $('.error_massage').hide();
-                dynamic_TotalData(Ajax_Call(flag0,flag1,flag2,start_date,end_date),main_fieldSet,main_colorSet);
-                LeftPieChart([35,45,40,25],kyc_color_set,kyc_label_set,`All Kyc DataSheet Between ${start_date} and ${end_date}`);
-                RightPieChart([50,30,25],gender_color_set,gender_label_set,`All Kyc DataSheet Between ${start_date} and ${end_date}`);
+                // attach two extra arguments start_date and end_date
+                let data = Ajax_Call(flag0,flag1,flag2,start_date,end_date);
+                let sanitize_data = dataSanitize(data);
+                // =========== all the chart data
+                let total_count = sanitize_data.slice(0,6);
+                let left_pie_chart = sanitize_data.slice(6,10);
+                let right_pie_chart = sanitize_data.slice(10);
+                dynamic_TotalData(total_count,main_fieldSet,main_colorSet);
+                LeftPieChart(left_pie_chart,kyc_color_set,kyc_label_set,`All Kyc DataSheet Between ${start_date} and ${end_date}`);
+                RightPieChart(right_pie_chart,gender_color_set,gender_label_set,`All Kyc DataSheet Between ${start_date} and ${end_date}`);
                 BottomBarChart([40,25,25,15,15],barchart_color_set,kyc_barchart_label,`All Kyc DataSheet Between ${start_date} and ${end_date}`);
             }
         })

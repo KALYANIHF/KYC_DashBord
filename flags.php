@@ -10,6 +10,13 @@
     $last_1_year = "created_at> now() - INTERVAL 12 month";
     // $custom_date = "select * from kyc_table where (DATE(created_at) BETWEEN '".2021-09-13."' AND '".2021-09-14.'")";
     $custom_date = "(DATE(created_at) BETWEEN '".$start_date."' AND '".$end_date."')";
+    $approve = "select * from kyc_table where status = 'approve'";
+    $reject = "select * from kyc_table where status = 'reject'";
+    $pending = "select * from kyc_table where status = 'pending'";
+    $seek_con = "select * from kyc_table where status = 'seek_con'";
+    $gender_male = "select * from kyc_table where gender = 'male'";
+    $gender_female = "select * from kyc_table where gender = 'female'";
+    $gender_trans = "select * from kyc_table where gender = 'transgender'";
     // =================
       /* time flag end*/
     // =================
